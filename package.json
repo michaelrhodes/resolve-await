@@ -1,20 +1,13 @@
 {
-  "name": "await-get",
-  "version": "0.0.0",
-  "description": "helps you cleanly handle async/await errors",
+  "name": "resolve-await",
+  "author": "Michael Rhodes",
+  "version": "1.0.0",
   "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "bench": "node bench.js"
+  },
   "devDependencies": {
     "benchmark": "~2.1.4"
-  },
-  "scripts": {
-    "bench": "node bench.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "async",
-    "await",
-    "error handling"
-  ],
-  "author": "Michael Rhodes",
-  "license": "MIT"
+  }
 }

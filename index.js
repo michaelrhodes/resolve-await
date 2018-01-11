@@ -1,6 +1,6 @@
-module.exports = get
+module.exports = resolve
 
-function get (promise) {
+function resolve (promise) {
   var result = Object.create(null)
 
   return promise

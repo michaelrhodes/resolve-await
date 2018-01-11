@@ -1,22 +1,19 @@
 var suite = require('benchmark').Suite()
-var get = require('./index')
+var resolve = require('./index')
 
 suite
-  .add('await-get', async function () {
-    var pet = await get(dog('Rover'))
-    if (pet.err) return pet.err
-    return pet.value.name
+  .add('resolve-await', async function () {
+    var pet = await resolve(dog('Rover'))
   })
   .add('try/catch', async function () {
     try { var pet = await dog('Rover') }
-    catch (err) { return err }
-    return pet.name
+    catch (err) {}
+  })
+  .add('promise', function () {
+    dog('Rover').then(noop, noop)
   })
   .add('callback', function () {
-    dogback('Rover', function (err, pet) {
-      if (err) return err
-      return pet.name
-    })
+    dogback('Rover', noop)
   })
   .on('cycle', function (event) {
     console.log(String(event.target))
@@ -38,3 +35,5 @@ function dogback (name, cb) {
       cb(null, { name: name })
   })
 }
+
+function noop () {}
